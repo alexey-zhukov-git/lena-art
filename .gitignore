@@ -2,3 +2,4 @@ shop/__pycache__
 shop/settings.py
 db.sqlite3
 main/__pycache__
+main/migrations/__pycache__
