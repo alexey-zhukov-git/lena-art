@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    template = loader.get_template('main/base.html')
+    template = loader.get_template('main/home.html')
     total_orders = 1
     context = {
         'total_orders': total_orders,
