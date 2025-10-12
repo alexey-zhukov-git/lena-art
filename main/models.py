@@ -1,6 +1,4 @@
 from django.db import models
-#from django.urls import reverse
-#from django.contrib import admin
 
 # Create your models here.
 
@@ -46,43 +44,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-
-"""
-class Photo(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
-    original_image = models.ImageField(upload_to='product_images/')
-    thumbnail_image = models.ImageField(upload_to='product_images/', blank=True)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if self.thumbnail_image and not self.original_image:
-            try:
-                from PIL import Image
-                img = Image.open(self.original_image.path)
-                img.thumbnail((200, 200))
-                img.save(self.thumbnail_image.path)
-            except Exception as e:
-                print(f"Error creating thumbnail: {e}")
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        ordering = ['title']
-
-    def __unicode__(self):
-        return self.title
     
     def get_absolute_url(self):
-        return reverse('my_app:my_model_detail', args=[self.pk])
-    
-class PhotoInline(admin.TabularInline):
-    model = Photo
-
-class ItemAdmin(admin.ModelAdmin):
-    inlines = [PhotoInline]
-
-admin.site.register(Item, ItemAdmin)
-admin.site.register(Photo)
-"""
+        return f'/products/{self.slug}'

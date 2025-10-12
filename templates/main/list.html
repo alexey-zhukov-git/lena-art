@@ -31,8 +31,12 @@
         <div class="w3-col l3 s6">
             <div class="w3-container">
                 <img src="{{ product.image.url }}" style="width: 100%"/>
-                <p class="w3-center"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br />
-                <b>{{ product.price }} рублей</b></p>
+                <p class="w3-center">
+                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br />
+                <b>{{ product.price }} рублей</b>
+                <a href="#" class="w3-button w3-block w3-black">В корзину</a>
+                </p>
+                
             </div>
         </div>
         {% endfor %}
