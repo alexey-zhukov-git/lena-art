@@ -5,3 +5,5 @@ main/__pycache__
 main/migrations/__pycache__
 static
 media
+users/__pycache__
+users/migrations/__pycache__
