@@ -1,0 +1,44 @@
+{% extends "main/base.html" %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+{% load static %}
+
+<!-- !PAGE CONTENT! -->
+
+{% include "includes/sidebar.html" %}
+ 
+<div class="w3-main" style="margin-left: 250px">
+    <!-- Push down content on small screens -->
+    <div class="w3-hide-large" style="margin-top: 83px"></div>
+
+    <!-- Top header -->
+    <header class="w3-container w3-xlarge">
+        <p class="w3-left">Лот № {{ product.id }}</p>
+        <p class="w3-right">
+            <i class="fa fa-shopping-cart w3-margin-right"></i>
+            <i class="fa fa-sign-in"></i>
+        </p>
+    </header>
+
+    <!-- Product grid -->
+
+    <div class="w3-container w3-row">
+        <div class="w3-panel w3-border-left w3-pale-red w3-border-red">
+            <p>Название: {{ product.name }}</p>
+            <p>Описание: {{ product.description }}</p>
+            <p>Цена: {{ product.price }} руб.</p>
+            <p>Категория: {{ product.category.name }}</p>
+        </div>
+    </div>
+
+
+    
+    <div class=" w3-container w3-row">
+        <img src="{{ product.image.url }}" style="width: 100%" />
+    </div>
+    
+    <br>
+
+    <!-- End page content -->
+</div>
+{% endblock %}

@@ -22,8 +22,10 @@
 
     <!-- Image header -->
 
-    <div class="w3-container w3-text-grey" id="">
-        <p>{{ products.count }} картин</p>
+    <div class="w3-container" id="">
+        <div class="w3-panel w3-border-left w3-pale-red w3-border-red">
+            <p>Всего {{ products.count }}</p>
+        </div>
     </div>
 
     <!-- Product grid -->
@@ -36,7 +38,7 @@
                 <p class="w3-center">
                 <b>{{ product.name }}</b></br>
                 <b>{{ product.price }} рублей</b>
-                <a href="#" class="w3-button w3-block w3-black">Купить</a>
+                <a href="{{ product.get_absolute_url }}" class="w3-button w3-block w3-black">Купить</a>
                 </p>
                 
             </div>

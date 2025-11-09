@@ -23,7 +23,7 @@ class Product(models.Model):
         related_name='products',
         on_delete=models.CASCADE
         )
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200)
     image = models.ImageField(
         upload_to='products/%Y/%m/%d',
