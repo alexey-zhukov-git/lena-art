@@ -32,6 +32,7 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     price = models.IntegerField()
     available = models.BooleanField(default=True)
+    is_new = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     class Meta:

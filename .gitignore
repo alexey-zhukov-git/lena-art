@@ -7,3 +7,5 @@ static
 media
 users/__pycache__
 users/migrations/__pycache__
+.vscode
+shop/credentials.py
