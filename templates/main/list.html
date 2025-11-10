@@ -38,7 +38,7 @@
                 <p class="w3-center">
                 <b>{{ product.name }}</b></br>
                 <b>{{ product.price }} рублей</b>
-                <a href="#" class="w3-button w3-block w3-black">Купить</a>
+                <a href="{{ product.get_absolute_url }}" class="w3-button w3-block w3-black">Подробнее</a>
                 </p>
                 
             </div>
