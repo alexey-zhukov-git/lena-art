@@ -15,7 +15,9 @@
     <header class="w3-container w3-xlarge">
         <p class="w3-left">Новинки</p>
         <p class="w3-right">
-            <i class="fa fa-shopping-cart w3-margin-right"></i>
+            <a href="{% url 'cart:cart_detail' %}" class="w3-bar-item w3-button">
+                <i class="fa fa-shopping-cart w3-margin-right"></i>
+            </a>    
             <i class="fa fa-sign-in"></i>
         </p>
     </header>
@@ -35,12 +37,13 @@
         <div class="w3-col l3 s6">
             <div class="w3-container">
                 <img src="{{ product.image.url }}" style="width: 100%"/>
-                <p class="w3-center">
+                < class="w3-center">
                 <b>{{ product.name }}</b></br>
                 <b>{{ product.price }} рублей</b>
-                <a href="{{ product.get_absolute_url }}" class="w3-button w3-block w3-black">Подробнее</a>
-                </p>
-                
+                <form action="{% url "cart:cart_add" product.id %}" method="post">
+                <input type="submit" value="Remove">
+                {% csrf_token %}
+                </form>                
             </div>
         </div>
         {% endfor %}

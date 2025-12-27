@@ -4,24 +4,17 @@ from django.shortcuts import get_object_or_404, render
 from .models import Category, Product
 
 # Create your views here.
-def home(request, category_slug=None):
-    category = None
+def home(request):
     categories = Category.objects.all()
     products = Product.objects.filter(available=True, is_new=True)
     quantity = Product.objects.filter(available=True, is_new=True).count()
-    product_slug = request.GET.get('product')
-    if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=category)
     return render(
         request,
         'main/home.html',
         {
-            'category': category,
             'categories': categories,
             'products': products,
             'quantity': quantity,
-            'product_slug': product_slug
         }
     )
 
@@ -44,9 +37,10 @@ def product_list_by_category(request, category_slug=None):
         }
     )
 
-def product_detail(request, product_slug):
+def product_detail(request, category_slug, product_slug):
     product = get_object_or_404(Product, slug=product_slug)
     categories = Category.objects.all()
+    category_slug = category_slug
     return render(
         request,
         'main/product-details.html',

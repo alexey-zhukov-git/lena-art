@@ -47,4 +47,4 @@ class Product(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return f'/products/{self.slug}'
+        return f'/{self.category.slug}/{self.slug}'
