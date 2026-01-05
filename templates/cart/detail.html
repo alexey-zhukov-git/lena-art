@@ -25,7 +25,7 @@
         {% for item in cart %} {% with product=item.product %}
         <div class="w3-col l3 s6">
             <div class="w3-container">
-                <img src="{{ product.image.url }}" style="width: 100%" />
+                <img src="{{ product.image.url }}" style="max-height: 140px" />
                 <p class="w3-center">
                 <b>{{ product.name }}</b><br />
                 <b>{{ product.price }} рублей</b>
