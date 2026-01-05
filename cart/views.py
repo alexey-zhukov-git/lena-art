@@ -4,6 +4,7 @@ from main.models import Product
 
 from .cart import Cart
 from .forms import CartAddProductForm
+from main.models import Category
 
 
 @require_POST
@@ -30,8 +31,13 @@ def cart_remove(request, product_id):
 
 def cart_detail(request):
     cart = Cart(request)
+    categories = Category.objects.all()
+
     for item in cart:
         item['update_quantity_form'] = CartAddProductForm(
             initial={'quantity': item['quantity'], 'override': True}
         )
-    return render(request, 'cart/detail.html', {'cart': cart})
+    return render(
+        request,
+        'cart/detail.html', 
+        {'cart': cart, 'categories': categories})

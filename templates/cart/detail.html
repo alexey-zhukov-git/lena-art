@@ -1,15 +1,47 @@
-{% extends "main/base.html" %}
-{% load static %}
+{% extends "main/base.html" %} 
+{% load static %} 
+{% block title %} Корзина {% endblock %} {% block content %} {% include "includes/sidebar.html" %}
+<div class="w3-main" style="margin-left: 250px">
+    <div class="w3-hide-large" style="margin-top: 83px"></div>
 
-{% block title %}
-  Your shopping cart
-{% endblock %}
+    <!-- Top header -->
+    <header class="w3-container w3-xlarge">
+        <p class="w3-left">Корзина</p>
+        <p class="w3-right">
+            <a
+                href="{% url 'cart:cart_detail' %}"
+                class="w3-margin-right"
+                style="text-decoration: none"
+            >
+                <i class="fa fa-shopping-cart"></i>
+            </a>
+            <a href="#" class="w3-margin-right" style="text-decoration: none">
+                <i class="fa fa-sign-in"></i>
+            </a>
+        </p>
+    </header>
 
-{% block content %}
-  <h1>Your shopping cart</h1>
-      {% for item in cart %}
-        {% with product=item.product %}
-              <p>{{ product.name }} ({{ product.price }})</p>
-        {% endwith %}
-      {% endfor %}
+    <div class="w3-row">
+        {% for item in cart %} {% with product=item.product %}
+        <div class="w3-col l3 s6">
+            <div class="w3-container">
+                <img src="{{ product.image.url }}" style="width: 100%" />
+                <p class="w3-center">
+                <b>{{ product.name }}</b><br />
+                <b>{{ product.price }} рублей</b>
+                <form
+                    action="{% url 'cart:cart_remove' product.id %}"
+                    method="post"
+                >
+                    {% csrf_token %}
+                    <button class="w3-btn w3-red w3-input">
+                        Удалить из корзины
+                    </button>
+                </form>
+                </p>
+            </div>
+        </div>
+        {% endwith %} {% endfor %}
+    </div>
+</div>
 {% endblock %}

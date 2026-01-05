@@ -9,17 +9,17 @@
                     onclick="w3_close()"
                     class="fa fa-remove w3-hide-large w3-button w3-display-topright"
                 ></i>
-                <h3 class="w3-wide"><b><a href="{% url 'home' %}">Lena Art</a></b></h3>
+                <h3 class="w3-wide"><b><a href="{% url 'main:home' %}" style="text-decoration: none">Lena Art</a></b></h3>
             </div>
             <div
                 class="w3-padding-64 w3-large w3-text-grey"
                 style="font-weight: bold">
 
-                <a href="{% url 'home' %}" class="w3-bar-item w3-button">Главная</a>
+                <a href="{% url 'main:home' %}" class="w3-bar-item w3-button">Главная</a>
 
                 {% for category in categories %}
                 <a 
-                    href="{% url 'product_list_by_category' category.slug %}"
+                    href="{% url 'main:product_list_by_category' category.slug %}"
                     class="w3-bar-item w3-button">{{ category.name }}</a>
                 {% endfor %}
             </div>
@@ -40,7 +40,7 @@
 
         <!-- Top menu on small screens -->
         <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-            <div class="w3-bar-item w3-padding-24 w3-wide"><a href="{% url 'home' %}">Lena Art</a></div>
+            <div class="w3-bar-item w3-padding-24 w3-wide"><a href="{% url 'main:home' %}" style="text-decoration: none">Lena Art</a></div>
             <a
                 href="javascript:void(0)"
                 class="w3-bar-item w3-button w3-padding-24 w3-right"

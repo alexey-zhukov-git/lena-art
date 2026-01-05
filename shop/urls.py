@@ -24,11 +24,9 @@ from django.views.static import serve
 from cart.views import *
 
 urlpatterns = [
-    path('', home, name='home'),
+    path('', include('main.urls')),
     path('admin/', admin.site.urls),
     path('cart/', include('cart.urls')),
-    path('<slug:category_slug>/', product_list_by_category, name='product_list_by_category'),
-    path('<slug:category_slug>/<slug:product_slug>/', product_detail, name='product_detail'),
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
