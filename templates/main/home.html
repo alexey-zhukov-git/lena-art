@@ -37,13 +37,17 @@
     <div class="w3-row">
         {% for product in products %}
         <div class="w3-col l3 s6">
-            <div class="w3-container">
+            <div class="w3-container" style="min-height: 400px">
                 <img src="{{ product.image.url }}" style="max-height: 140px"/>
                 <p class="w3-center">
                 <b>{{ product.name }}</b></br>
                 <b>{{ product.price }} рублей</b>
                 <form action="{% url "cart:cart_add" product.id %}" method="post">
                 <button class="w3-btn w3-black w3-input">В корзину</button>
+                {% csrf_token %}
+                </form><br>
+                <form action="{% url 'main:product_detail' product.category.slug product.slug %}" method="post">
+                <button class="w3-btn w3-blue w3-input">Подробнее</button>
                 {% csrf_token %}
                 </form>
                 </p>       

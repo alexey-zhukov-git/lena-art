@@ -24,10 +24,12 @@
 
     <div class="w3-container w3-row">
         <div class="w3-panel w3-leftbar w3-pale-blue w3-border-blue">
-            <p>Название: {{ product.name }}</p>
-            <p>Описание: {{ product.description }}</p>
-            <p>Цена: {{ product.price }} руб.</p>
-            <p>Категория: {{ product.category.name }}</p>
+            <ul>
+                <li>Название: {{ product.name }}</li>
+                <li>Описание: {{ product.description }}</li>
+                <li>Цена: {{ product.price }} руб.</li>
+                <li>Категория: <a href="{% url 'main:product_list_by_category' product.category.slug %}">{{ product.category.name }}</a></li>
+            </ul>
         </div>
     </div>
 
